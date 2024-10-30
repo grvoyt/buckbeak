@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+    nginx:
+        image: nginx:latest
+        restart: always
+        working_dir: /opt/buckbeak
+        volumes:
+            - ./:/opt/buckbeak
+            - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            -   8080:80
+        depends_on:
+            - app
+    app:
+        build:
+            dockerfile: ./docker/php/Dockerfile
+        restart: always
+        volumes:
+            -   ./:/opt/buckbeak
+        working_dir: /opt/buckbeak
+        depends_on:
+            mysql:
+                condition: service_healthy
+
+    mysql:
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_DATABASE: buckbeak
+            MYSQL_USER: buckbeak
+            MYSQL_PASSWORD: 'buckbeak'
+            MYSQL_ROOT_PASSWORD: 'buckbeak'
+        volumes:
+            - db:/var/lib/mysql
+        healthcheck:
+            test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+            timeout: 2s
+            retries: 10
+
+volumes:
+    db: {}
