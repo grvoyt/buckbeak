@@ -1,14 +1,6 @@
 cp .env.example .env
 
 ```dotenv
-#для контейнера БД
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=buckbeak
-DB_USERNAME=buckbeak
-DB_PASSWORD=buckbeak
-
 #для работы пушера
 PUSHER_HOST=
 PUSHER_PORT=443
@@ -23,6 +15,7 @@ PUSHER_APP_SECRET=
 запуск 
 
 ```shell
-git clone ...
+git clone https://github.com/grvoyt/buckbeak.git
+cd buckbeak
 make start
 ```
