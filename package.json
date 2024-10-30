@@ -9,5 +9,11 @@
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0.0",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "i": "^0.3.7",
+        "laravel-echo": "^1.16.1",
+        "npm": "^10.9.0",
+        "pusher-js": "^8.4.0-rc2"
     }
 }

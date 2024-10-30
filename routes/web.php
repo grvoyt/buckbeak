@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return response()->json('',\Illuminate\Http\Response::HTTP_NOT_FOUND);
+    return view('welcome');
 });

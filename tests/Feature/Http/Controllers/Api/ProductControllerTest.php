@@ -190,6 +190,12 @@ class ProductControllerTest extends TestCase
             'updated_at'
         ]);
 
+        $product_updated = Product::find($product_id);
+
+        self::assertTrue(
+            $product_updated->name === $update_data['name']
+        );
+
         $not_user_product_id = Product::where('user_id', '!=',$user->id)->value('id');
 
         $response = $this->actingAs($user)
